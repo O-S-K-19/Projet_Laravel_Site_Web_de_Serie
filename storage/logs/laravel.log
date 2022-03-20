@@ -1,0 +1,16 @@
+[2022-03-16 08:38:53] local.ERROR: The "--ressource" option does not exist. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"--ressource\" option does not exist. at /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Input/ArgvInput.php:220)
+[stacktrace]
+#0 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Input/ArgvInput.php(149): Symfony\\Component\\Console\\Input\\ArgvInput->addLongOption()
+#1 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Input/ArgvInput.php(82): Symfony\\Component\\Console\\Input\\ArgvInput->parseLongOption()
+#2 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Input/ArgvInput.php(71): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken()
+#3 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Input/Input.php(55): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Command/Command.php(257): Symfony\\Component\\Console\\Input\\Input->bind()
+#5 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run()
+#6 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Application.php(1015): Illuminate\\Console\\Command->run()
+#7 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand()
+#8 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#9 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run()
+#10 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run()
+#11 /home/ousseini/Desktop/Programmation web server/Developpement site web/projet-laravel-series/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#12 {main}
+"} 
