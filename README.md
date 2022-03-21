@@ -22,10 +22,10 @@ git clone https://github.com/O-S-K-19/Projet_Laravel_Site_Web_de_Serie.git
 ```Une fois le projet cloné, ouvrez avec votre editeur preferé et à partir d'un terminal vous vous placez dans le projet et lancez :
 composer update
 
-```Ensuite dans l'editeur vous allez ouvrir le fichier .env et modifier la ligne 13 : DB_DATABASE="/home/ousseini/Desktop/Projet_Laravel_Site_Web_de_Serie/database/database.sqlite" en replaçant par le chemin absolu par le votre permettant d'acceder au fichier database.sqlite situé dans database du dossier du projet.
+```Ensuite dans l'editeur vous allez ouvrir le fichier .env et modifier la ligne 13 : DB_DATABASE="/home/ousseini/Desktop/Projet_Laravel_Site_Web_de_Serie/database/database.sqlite" en replaçant par le chemin absolu (sous windows utilisez les doubles back slash : \\ ) par le votre permettant d'acceder au fichier database.sqlite situé dans database du dossier du projet.
 
 ```Puis vous allez toujours dans le terminal dans le projet faire :
-php artisan make:migration --seed
+php artisan migrate:refresh --seed
 
 ``` Si tout Ok alors vous avez juste à faire :
 php artisan serve
