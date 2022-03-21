@@ -1,5 +1,3 @@
-# senscritiquescraper
-
 ![Build Status](https://github.com/dbeley/senscritiquescraper/workflows/CI/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e95f1fcf5d2e47b480a3ef9c98ce1b1d)]
 
