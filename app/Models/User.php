@@ -41,4 +41,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+        /**
+* Get the user series'
+*/
+public function Series()
+{
+return $this->hasMany(Serie::class,'author_id');
+}
+
+
+  /**
+* Get the user Comments'
+*/
+
+
+public function Comments()
+{
+return $this->hasMany(Comment::class,'author_id');
+}
 }

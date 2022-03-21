@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Serie;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('welcome');
+
+        $series = Serie::all();
+        return view('welcome',
+        array('series' => $series
+        ));
     }
 }

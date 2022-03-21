@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Serie;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -11,9 +12,30 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        $series = Serie::all();
+        return view('series.all',
+        array('series' => $series
+        ));
+
+    }
+
+
+    public function getSerie() {
+        $series = \App\Models\Serie::all(); //get all series
+
+        return view('main',array(
+            'series' => $series
+    ));
+    }
+
+
+    public function show($serie_name) { $serie =
+        \App\Models\Serie::where('serie_name',$serie_name)->first(); //get first serie with serie_nam == $serie_name
+        return view('series/single',array( //Pass the serie to the view 'serie' => $serie
+        ));
     }
 
     /**
@@ -21,7 +43,8 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+     public function create()
     {
         //
     }
@@ -32,7 +55,8 @@ class SeriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+     public function store(Request $request)
     {
         //
     }
@@ -43,10 +67,10 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.

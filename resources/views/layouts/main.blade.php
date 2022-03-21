@@ -19,20 +19,22 @@
     <div class="top-bar">
         <div class="top-bar-left" style="flex: justify">
             <ul class="menu" style="flex:center">
-                <li class="menu-text">My first app</li>
+                <li class="menu-text">Welcome to Series</li>
                 <li><a href="{{ route('homePage') }}">Home</a></li>
                 <li><a href="{{ route('seriesPage') }}">Series</a></li>
                 <li><a href="{{ route('contactPage') }}">Contact</a></li>
-            </ul>
-
-            <ul class="menu" style="flex:center">
+            @if (Route::has('login'))
                 @auth
-                    <li><a href="{{ route('homePage') }}">Ion Velesco</a></li>
-                    <li><a href="{{ route('contactPage') }}">Log out</a></li>
-                @else
-                    <li><a href="{{ route('seriesPage') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
+            @else
+                <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+
+            @if (Route::has('register'))
+                <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+            @endif
                 @endauth
+
+            @endif
             </ul>
         </div>
     </div>
@@ -40,7 +42,7 @@
 
     <div class="callout large primary">
         <div class="text-center">
-            <h1>Series</h1>
+            <h1>{{ $title ?? "Series" }}</h1>
             <h2 class="subheader">Series Master</h2>
         </div>
     </div>

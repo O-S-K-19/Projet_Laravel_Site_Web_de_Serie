@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     public function index() {
-        return view('contact.index');
+        return view('contacts.contact');
     }
 
     public function contactForm(Request $request){
@@ -19,7 +19,7 @@ class ContactController extends Controller
             'message'=>'required'
         ]);
 
-        //store data in data base 
+        //store data in data base
         // Contact::create($request->all());
         Contact::create([
             'name'=> $request->name,

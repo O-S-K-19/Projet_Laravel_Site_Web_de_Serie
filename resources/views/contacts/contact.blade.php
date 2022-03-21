@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
+@section($title = "Contact us")
 @section('content')
     <div class="container mt-5">
         {{-- <!-- Success message -->
