@@ -12,6 +12,7 @@ class Serie extends Model
 
     protected $table = 'series';
 
+
 /**
 * Get the user that authored the serie.
 */

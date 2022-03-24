@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Serie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class SeriesController extends Controller
 {
@@ -12,30 +14,12 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
+        //$series = Serie::orderBy('title','asc')->paginate(3); Pour Pagination et ajouter ça apres la boucle dans la vue : {{ $series->links() }}
         $series = Serie::all();
-        return view('series.all',
-        array('series' => $series
-        ));
-
-    }
-
-
-    public function getSerie() {
-        $series = \App\Models\Serie::all(); //get all series
-
-        return view('main',array(
-            'series' => $series
-    ));
-    }
-
-
-    public function show($serie_name) { $serie =
-        \App\Models\Serie::where('serie_name',$serie_name)->first(); //get first serie with serie_nam == $serie_name
-        return view('series/single',array( //Pass the serie to the view 'serie' => $serie
-        ));
+        return view('series.all', ['series' => $series]);
+        //return view('series.all')->with('series', $series);
     }
 
     /**
@@ -43,8 +27,7 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function create()
+    public function create()
     {
         //
     }
@@ -55,8 +38,7 @@ class SeriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-     public function store(Request $request)
+    public function store(Request $request)
     {
         //
     }
@@ -67,10 +49,11 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     //
-    // }
+    public function show($serie_url) {
+        $serie = Serie::where('url',$serie_url)->first();
+        return view('series.single',array('serie' => $serie));
+        }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-       // $users = User::factory(10)->create();
+
+        // $users = User::factory(10)->create();
         $users = [
-            User::factory(10)->has(
+            User::factory(3)->has(
             Serie::factory(2)
             //un user a n series
             //Serie::factory(2)->has(

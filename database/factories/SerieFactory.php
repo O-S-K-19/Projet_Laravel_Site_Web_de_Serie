@@ -27,14 +27,14 @@ class SerieFactory extends Factory
 
 
         return [
-            //'author_id' => $this->faker->userName,
             'title' => $title,
             'content' => $this->faker->paragraph(),
-            'acteurs'=> $this->faker->name(),
+            'actors'=> $this->faker->name(),
+            'category' => $this->faker->sentence(3),
             'url'=>urlencode($title),
+            'year'=>$this->faker->date(),
             'tags'=> $this->faker->word(),
-            //$table->dateTime('date')->useCurrent();
-            //$table->string('status', 45)->default('draft');
+
         ];
     }
 }

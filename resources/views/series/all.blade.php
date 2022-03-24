@@ -2,9 +2,15 @@
 
 @section($title = "Series")
 @section('content')
-    @foreach ($series as $serie)
-        <ul>
-            <li>{{ $serie->title }}</li>
-        </ul>
-    @endforeach
+    @if (count($series) > 0)
+        @foreach ($series as $serie)
+            <ul>
+                <li><a href="/series/{{$serie->url}}">{{$serie->title }}</a></li>
+            </ul>
+        @endforeach
+
+    @else
+        <p>No series found</p>
+    @endif
+
 @endsection

@@ -4,9 +4,13 @@
 @section($title = "Home")
 
 @section('content')
-    @for($i = count($series)-1; $i > count($series)-4; $i--)
-        <ul>
-            <li>{{ $series[$i]->title }}</li>
-        </ul>
-    @endfor
+    @if (count($series) > 0)
+        @foreach ($series as $serie)
+            <ul>
+                <li><a href="/series/{{$serie->url}}">{{ $serie->title }}</a></li>
+            </ul>
+        @endforeach
+    @else
+        <p>No series found</p>
+@endif
 @endsection
