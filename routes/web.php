@@ -23,7 +23,7 @@ Route::get('/', [HomeController::class, 'index'])->name('homePage');
 Route::get('/series', [SeriesController::class, 'index'])->name('seriesPage');
 Route::get('/series/{url}', [SeriesController::class, 'show'])->name('singleSeriePage');
 Route::get('/contact', [ContactController::class, 'index'])->name('contactPage');
-Route::post('/contact', [ContactController::class, 'contactForm']);
+Route::post('/contact', [ContactController::class, 'store']);
 
 //####################################################################################################
 // LES ROUTES DE GESTION DES SUBSCRIBERS

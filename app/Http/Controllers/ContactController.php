@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     public function index() {
-        return view('contacts.contact');
+        $msg='';
+        return view('contacts.contact')->with('msg',$msg);
     }
 
-    public function contactForm(Request $request){
+    public function store(Request $request){
         //to validate form
         $this->validate($request, [
             'name'=>'required|max:255',
@@ -21,12 +22,17 @@ class ContactController extends Controller
 
         //store data in data base
         // Contact::create($request->all());
+        /*
+        où vont etre envoyes les resultats de la requetes ???????????
+
         Contact::create([
             'name'=> $request->name,
             'email'=> $request->email,
             'message'=> $request->message,
 
-        ]);
-        return redirect()->route('contactPage');
+        ]);*/
+       $msg = 'SUCCES !!!';
+       return view('contacts.contact')->with('msg',$msg);
+        //return redirect()->route('contactPage')->with('msg', $msg);
     }
 }

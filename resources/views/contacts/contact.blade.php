@@ -9,6 +9,7 @@
                 {{ Session::get('success') }}
             </div>
         @endif --}}
+        <h1>{{ $msg ?? '' }}</h1>
         <form action="" method="post" action="{{ route('contactPage') }}">
             <!-- CROSS Site Request Forgery Protection -->
             @csrf

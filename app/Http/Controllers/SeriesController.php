@@ -29,7 +29,7 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        return 'create';
     }
 
     /**
@@ -40,7 +40,7 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'SUCCES !';
     }
 
     /**
@@ -52,6 +52,10 @@ class SeriesController extends Controller
     public function show($serie_url) {
         $serie = Serie::where('url',$serie_url)->first();
         return view('series.single',array('serie' => $serie));
+        //return view('series.single',['serie' => $serie]);
+        //return view('series.single')->with('serie',$serie);//,array('serie' => $serie));
+
+
         }
 
 
@@ -63,7 +67,7 @@ class SeriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'MODIFIER';
     }
 
     /**
@@ -75,7 +79,7 @@ class SeriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return 'Mise à Jour';
     }
 
     /**
@@ -86,6 +90,6 @@ class SeriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'Supprimer';
     }
 }
