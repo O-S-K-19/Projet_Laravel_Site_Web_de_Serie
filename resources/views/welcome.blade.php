@@ -31,7 +31,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        @if(Auth::user()->role_id == 1)
+                        @if(Auth::user()->role == 'producer')
                             <a href="{{ url('/producer/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                         @else
                             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
@@ -46,5 +46,6 @@
             @endif
 
         </div>
+
     </body>
 </html>

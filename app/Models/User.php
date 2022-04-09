@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Serie;
+use App\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
@@ -27,7 +29,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id',
+        'role',
+        'authorize_to_comment',
     ];
 
     /**
@@ -59,9 +62,17 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-public function role(){
-    return $this->belongsTo('App\Models\Role');
-}
+
+    // user can have many series
+    public function series(){
+        return $this->hasMany(Serie::class);
+    }
+
+    // user can provide many comment
+    public function comments()
+    {
+    return $this->hasMany(Comment::class);
+    }
 
 
 }

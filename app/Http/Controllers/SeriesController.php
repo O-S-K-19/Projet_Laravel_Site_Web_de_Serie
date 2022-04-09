@@ -44,25 +44,29 @@ class SeriesController extends Controller
         $this->validate($request, [
 
            'author_id'=> 'required',
-            //$table->mediumText('authors');
+
            'title'=> 'required',
            'content'=> 'required',
+           'year'=> 'required',
            /*
            'actors'=> 'required',
            'category'=> 'required',
             'tags'=> 'required',
            'status'=> 'required',
-           'year'=> 'required',
+            'authors' => 'required',
            'image'=> 'required',
            'movie'=> 'required',
             */
         ]);
+
         // Create serie
+        Serie::create($request->all());
+
         /*
         $serie = new Serie;
-        $serie->author_id
-        $serie->title
-        $serie->content
+        $serie->author_id => author_id;
+        $serie->title;
+        $serie->content;
         */
         /*
         $serie->actors
@@ -77,13 +81,7 @@ class SeriesController extends Controller
         $serie->
         */
 
-
-
-
-
-
-
-        return 'SUCCES !';
+        return back()->with('info', 'La serie a bien été créé');
     }
 
     /**
@@ -99,15 +97,8 @@ class SeriesController extends Controller
             'serie' => $serie,
             'comments'=> $comments,
 ));
-
-
-
-
-
-
         //return view('series.single',['serie' => $serie]);
         //return view('series.single')->with('serie',$serie);
-
 
         }
 
@@ -124,17 +115,12 @@ class SeriesController extends Controller
                 //     'content'=> $request->content
                 // ]);
                 Comment::create([
-                    'author_id' => $request->auth()->id(), // il faut changer auth() par USER() par la suite... ou faire reference  l'auteur du commentaire
+                    'author_id' => $request->auth()->id, // il faut changer auth() par USER() par la suite... ou faire reference  l'auteur du commentaire
                     'serie_id' => $request->singleSeriePage,
                     'content'=> $request->content,
                 ]);
                 return redirect()->route('homePage');
             }
-
-
-
-
-
 
 
 
@@ -159,6 +145,7 @@ class SeriesController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         return 'Mise à Jour';
     }
 
@@ -170,6 +157,9 @@ class SeriesController extends Controller
      */
     public function destroy($id)
     {
-        return 'Supprimer';
+        $serie = Serie::where('url',$id)->first();
+        $serie->delete();
+
+    return back()->with('info', 'Suppression reussie ! :).');
     }
 }

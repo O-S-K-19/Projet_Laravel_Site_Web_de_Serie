@@ -2,32 +2,44 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Serie extends Model
 {
-    use HasFactory;
-    protected $fillable = ['title','content','acteurs','url','tags']; //indiquez les colonnes qui vont etre affectées par les changements
+        use HasFactory, Notifiable;
 
-    protected $table = 'series';
+        protected $fillable = ['title','content','acteurs','url','tags']; //indiquez les colonnes qui vont etre affectées par les changements
+
+        protected $table = 'series';
 
 
-/**
-* Get the user that authored the serie.
-*/
-public function author()
-{
-return $this->belongsTo(User::class,'author_id');
-}
+    /**
+    * Get the user that authored the serie.
+    */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-/**
-* Get the user Comments'
-*/
+    // Serie belong to many categories
+    public function Categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 
-public function Comments()
-{
-return $this->hasMany(Comment::class,'serie_id');
-}
+    // serie can have many comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
+    // recuperation uniquement des commentaires valides
+    public function validComments()
+    {
+        return $this->comments()->whereHas('user', function ($query) {
+            $query->whereValid(true);// autoriser à faire des commentaires
+        });
+    }
 }

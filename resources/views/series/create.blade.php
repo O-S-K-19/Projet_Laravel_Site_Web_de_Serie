@@ -1,4 +1,6 @@
-@extends('template')
+
+@extends('admin.main')
+
 @section('content')
     <div class="card">
         <header class="card-header">
@@ -6,19 +8,19 @@
         </header>
         <div class="card-content">
             <div class="content">
-                <form action="#" method="POST">
+                <form action=" {{ route('series.store') }}" method="POST">
                     @csrf
                     <div class="field">
-                        <label class="label">Titre</label>
+                        <label class="label">Title</label>
                         <div class="control">
-                          <input class="input @error('title') is-danger @enderror" type="text" name="title" value="{{ old('title') }}" placeholder="Titre du film">
+                          <input class="input @error('title') is-danger @enderror" type="text" name="title" value="{{ old('title') }}" placeholder="Titre du serie">
                         </div>
                         @error('title')
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="field">
-                        <label class="label">Année de diffusion</label>
+                        <label class="label">Year</label>
                         <div class="control">
                           <input class="input" type="number" name="year" value="{{ old('year') }}" min="1950" max="{{ date('Y') }}">
                         </div>
@@ -27,11 +29,11 @@
                         @enderror
                     </div>
                     <div class="field">
-                        <label class="label">Description</label>
+                        <label class="label">Content</label>
                         <div class="control">
-                            <textarea class="textarea" name="description" placeholder="Description de la serie">{{ old('description') }}</textarea>
+                            <textarea class="textarea" name="description" placeholder="Description de la serie">{{ old('content') }}</textarea>
                         </div>
-                        @error('description')
+                        @error('content')
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </div>

@@ -16,20 +16,18 @@ class CreateSeriesTable extends Migration
         Schema::create('series', function (Blueprint $table) {
 
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('author_id')->default(0)->index('series_fk1_idx');
-            $table->foreign('author_id')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->unsignedBigInteger('user_id')->default(0)->index('series_fk1_idx');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
             //$table->mediumText('authors');
             $table->mediumText('title');
             $table->longText('content');
-            $table->longText('actors');
-            $table->mediumText('category');
-            $table->string('url', 255)->unique('url_UNIQUE');
-            $table->dateTime('date')->useCurrent();
-            $table->text('tags')->nullable();
-            $table->string('status', 45)->default('draft');
+            $table->longText('actors')->nullable();;
+            $table->mediumText('category')->nullable();;
+            $table->string('url', 255)->unique();
+            $table->string('status', 45)->default('draft')->nullable();
             $table->dateTime('year');
-            $table->string('image', 255)->default('none');
-            $table->string('movie', 255)->default('none');
+            $table->string('image', 255)->default('none')->nullable();
+            $table->string('movie', 255)->default('none')->nullable();
             $table->timestamps();
         });
     }

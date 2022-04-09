@@ -1,12 +1,13 @@
-@extends('template')
+@extends('admin.main')
+
 @section('content')
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">Modification d'un serie</p>
+            <p class="card-header-title">Modification d'une serie</p>
         </header>
         <div class="card-content">
             <div class="content">
-                <form action="{{ route('series.update', $serie->id) }}" method="POST">
+                <form action="{{ route('series.update', $serie->url) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="field">
@@ -30,7 +31,7 @@
                     <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
-                            <textarea class="textarea" name="description" placeholder="Description du serie">{{ old('description', $serie->description) }}</textarea>
+                            <textarea class="textarea" name="description" placeholder="Description du serie">{{ old('content', $serie->content) }}</textarea>
                         </div>
                         @error('description')
                             <p class="help is-danger">{{ $message }}</p>

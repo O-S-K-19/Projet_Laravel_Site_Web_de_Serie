@@ -24,7 +24,7 @@ class SerieFactory extends Factory
 
     public function definition()
     {
-        $title = $this->faker->sentence(2,true);
+        /*
         $users_id = [];
         $users = User::all();
         //var_dump($users);
@@ -36,18 +36,18 @@ class SerieFactory extends Factory
         }
         else
             return;
-
-
+        */
+        $title = $this->faker->sentence(2,true);
         return [
             //'authors'=>$this->faker->name(),
-            'author_id'=> random_int($users_id[0],$users_id[count($users_id)-1]),
+            //'author_id'=> random_int($users_id[0],$users_id[count($users_id)-1]),
             'title' => $title,
             'content' => $this->faker->paragraph(),
             'actors'=> $this->faker->name(),
             'category' => $this->faker->sentence(3),
             'url'=>urlencode($title),
             'year'=>$this->faker->date(),
-            'tags'=> $this->faker->word(),
+            //'tags'=> $this->faker->word(),
         ];
     }
 }

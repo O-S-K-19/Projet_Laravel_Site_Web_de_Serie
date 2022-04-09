@@ -21,10 +21,10 @@ class ContactController extends Controller
         ]);
 
         //store data in data base
-        // Contact::create($request->all());
-
-        //où vont etre envoyes les resultats de la requetes ???????????
-
+        Contact::create ($request->all());
+        $msg = 'Your message has been recorded, we will respond as soon as possible.';
+        return redirect()->route('contactPage')->with('msg', $msg);
+        /*
         Contact::create([
             'name'=> $request->name,
             'email'=> $request->email,
@@ -32,6 +32,6 @@ class ContactController extends Controller
         ]);
        $msg = 'SUCCES !!!';
        //return view('contacts.contact')->with('msg',$msg);
-        return redirect()->route('contactPage')->with('msg', $msg);
+        return redirect()->route('contactPage')->with('msg', $msg);*/
     }
 }
