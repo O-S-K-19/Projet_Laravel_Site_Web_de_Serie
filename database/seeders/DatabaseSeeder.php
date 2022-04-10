@@ -31,9 +31,9 @@ class DatabaseSeeder extends Seeder
                 'role' => 'admin',
             ]);
         // id = 2, 3, 4 et serie_id = 1, 2, 3, 4, 5, 6
-        // Creation de 3 producteurs qui ont chacun 2 series
+        // Creation de 3 producteurs qui ont chacun 3 series
         User::factory()->count(3)->has(
-            Serie::factory()->count(2),
+            Serie::factory()->count(3),
         )->create([
                 'role' => 'producer',
         ]);

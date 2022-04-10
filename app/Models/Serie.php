@@ -10,7 +10,7 @@ class Serie extends Model
 {
         use HasFactory, Notifiable;
 
-        protected $fillable = ['title','content','acteurs','url','tags']; //indiquez les colonnes qui vont etre affectées par les changements
+        protected $fillable = ['title','user_id','category','content','movie','serie_maker','year','actors','image','url']; //indiquez les colonnes qui vont etre affectées par les changements
 
         protected $table = 'series';
 

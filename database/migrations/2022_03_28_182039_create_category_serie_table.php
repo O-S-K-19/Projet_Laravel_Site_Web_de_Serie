@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('category_serie', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->unsignedBigInteger('serie_id');
+            $table->unsignedBigInteger('serie_id')->nullable();
             $table->foreign('serie_id')->references('id')->on('series')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }

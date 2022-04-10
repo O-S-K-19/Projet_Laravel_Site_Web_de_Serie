@@ -4,7 +4,9 @@ use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 
 /*
@@ -53,16 +55,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/producer/dashboard', func
 
 // -------------- LES ROUTES DE L'ADMIN -----------------------------------------------------------------------------------------------------------------
 
+// les routes d'authentification
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin/dashboard', function () {
     return view('dashboards.admin');
 })->name('adminDashboard');
-Route::resource('admin/series', SeriesController::class);
 
+
+// les routes de ressources
+Route::resource('admin/series', SeriesController::class);
+Route::resource('admin/users', UsersController::class);
+Route::resource('admin/contacts', ContactController::class);
+Route::resource('admin/comments', CommentController::class);
+
+
+
+// les routes de gestion
 Route::get('admin', [AdminController::class, 'index'])->name('adminPage');
 Route::get('admin/users', [AdminController::class, 'show'])->name('manageUsersPage');
 Route::get('admin/series', [AdminController::class, 'show'])->name('manageSeriesPage');
 Route::get('admin/comments', [AdminController::class, 'show'])->name('manageCommentsPage');
 Route::get('admin/contacts', [AdminController::class, 'show'])->name('manageContactsPage');
+Route::get('admin/favorites', [AdminController::class, 'show'])->name('manageFavoritesPage');
 
 
 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <header class="card-header">
-        <p class="card-header-title">series</p>
+        <h1 class="card-header-title">series</h1>
     </header>
     <div class="card-content">
         <div class="content">
@@ -13,7 +13,7 @@
                 </div>
             @endif
             @if (Route::prefix('/admin'))
-            <a class="button is-info" href="{{ route('series.create') }}">Créer une série</a>
+            <a class="button is-info" href="{{ route('series.create') }}">Ajouter une nouvelle série</a>
             @endif
             @if (count($series) > 0)
             <table class="table is-hoverable">
@@ -21,8 +21,7 @@
                     <tr>
                         <th>#</th>
                         <th>Titre</th>
-                        <th></th>
-                        <th></th>
+                        <th>Date de sortie</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -31,6 +30,7 @@
                     @foreach($series as $serie)
                             <tr>
                                 <td>{{ $serie->id }}</td>
+                                <td>{{ $serie->year }}</td>
                                 <td><strong><a href="/series/{{$serie->url}}">{{$serie->title }}</a></strong></td>
                             </tr>
                         @endforeach
@@ -39,6 +39,7 @@
                             <tr>
                                 <td>{{ $serie->id }}</td>
                                 <td><strong>{{ $serie->title }}</strong></td>
+                                <td>{{ $serie->year }}</td>
                                 <td><a class="button is-primary" href="{{ route('singleSeriePage', $serie->url) }}">Voir</a></td>
                                 <td><a class="button is-warning" href="{{ route('series.edit', $serie->url) }}">Modifier</a></td>
                                 <td>

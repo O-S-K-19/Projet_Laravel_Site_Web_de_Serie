@@ -10,7 +10,7 @@
             </div>
         @endif --}}
         <h1>{{ $msg ?? '' }}</h1>
-        <form action="" method="post" action="{{ route('contactPage') }}">
+        <form method="post" action="{{ route('contactPage') }}">
             <!-- CROSS Site Request Forgery Protection -->
             @csrf
             <div class="form-group">

@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <header class="card-header">
-        <p class="card-header-title">series</p>
+        <h1 class="card-header-title">Comments</h1>
     </header>
     <div class="card-content">
         <div class="content">
@@ -12,37 +12,30 @@
                     {{ session('info') }}
                 </div>
             @endif
-            @if (Route::prefix('/admin'))
-            <a class="button is-info" href="{{ route('series.create') }}">Créer une série</a>
-            @endif
-            @if (count($series) > 0)
+
+            @if (count($comments) > 0)
             <table class="table is-hoverable">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Titre</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Utilisateur</th>
+                        <th>Serie</th>
+                        <th>Contenu</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if (!Route::prefix('/admin'))
-                    @foreach($series as $serie)
+                        @foreach($comments as $comment)
                             <tr>
-                                <td>{{ $serie->id }}</td>
-                                <td><strong><a href="/series/{{$serie->url}}">{{$serie->title }}</a></strong></td>
-                            </tr>
-                        @endforeach
-                    @else
-                        @foreach($series as $serie)
-                            <tr>
-                                <td>{{ $serie->id }}</td>
-                                <td><strong>{{ $serie->title }}</strong></td>
-                                <td><a class="button is-primary" href="{{ route('singleSeriePage', $serie->url) }}">Voir</a></td>
-                                <td><a class="button is-warning" href="{{ route('series.edit', $serie->url) }}">Modifier</a></td>
+                                <td>{{ $comment->id }}</td>
+                                <td>{{ App\Models\User::where('id',  $comment->user_id)->first()->name; }}</td>
+                                <td>{{ App\Models\Serie::where('id',  $comment->serie_id)->first()->title; }}</td>
+                                <td>{{ $comment->content }}</td>
+                                <td>{{ $comment->date }}</td>
+                                <td><a class="button is-primary" href="#">Valider</a></td>
+                                <td><a class="button is-warning" href="{{ route('comments.edit', $comment->id) }}">Modifier</a></td>
                                 <td>
-                                    <form action="{{ route('series.destroy', $serie->url) }}" method="post">
+                                    <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="button is-danger" type="submit">Supprimer</button>
@@ -50,7 +43,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @endif
                 </tbody>
             </table>
             @else

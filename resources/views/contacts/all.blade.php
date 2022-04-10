@@ -64,24 +64,20 @@
 
         <ul style="position: relative;
         left: 150px;">
-            @foreach ($series as $serie)
-
+            @for ($i = 0; $i < 7; $i++)
                 <li class="" style="display: inline-block; padding: 10px">
                     <figure	class="">
-                        <a href="{{ route('singleSeriePage', $serie->url) }}" class="" id="">
-                            <img class="" itemprop="image" src="{{ $serie->image }}" alt="image" title="{{ $serie->title }}" width="150" height="150"></a>
+                            <img class="" itemprop="image" src="https://media.senscritique.com/media/000020537587/150/moon_knight.jpg" alt="Affiche Moon Knight" title="Affiche Moon Knight" width="150" height="150">
                     </figure>
                 </li>
                 <li class="block-serie" style="display: inline-block; padding: 10px">
-                    <h4 class=""><a href="{{ route('singleSeriePage', $serie->url) }}" class="" id="">{{ $serie->title }}</a><span class="">({{ $serie->year }})</span></h4>
-                    <p class="">{{ $serie->category }}</p>
-                   <p class="">Série de {{ $serie->serie_maker }}</p>
-                   <figcaption>Note : 6.8</figcaption>
-                   <a class="button is-primary" href="#">Ajouter aux favories</a>
-                    <a class="button is-primary" href="#">Noter</a>
+                    <h4 class=""><a href="#" class="" id="">Moon Knight</a><span class="">(2022)</span></h4>
+                    <p class="">
+                        <span class="" ></span> 47 min.<time datetime="2022-03-30" >30 mars 2022</time> (France). 1 saison. Action, aventure et fantastique.</p>
+                   <p class="">Série de <a href="#" class="">Jeremy Slater</a> avec Oscar Isaac, Ethan Hawke, May Calamawy</p>
                 </li>
                 <br>
-            @endforeach
+            @endfor
         </ul>
 
 

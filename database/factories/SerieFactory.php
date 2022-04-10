@@ -44,6 +44,7 @@ class SerieFactory extends Factory
             'title' => $title,
             'content' => $this->faker->paragraph(),
             'actors'=> $this->faker->name(),
+            'serie_maker'=> $this->faker->name(),
             'category' => $this->faker->sentence(3),
             'url'=>urlencode($title),
             'year'=>$this->faker->date(),

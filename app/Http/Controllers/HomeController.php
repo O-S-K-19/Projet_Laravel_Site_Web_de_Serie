@@ -13,8 +13,10 @@ class HomeController extends Controller
 
 
         //affiche les 3 derniers series sur le home
-        $series = Serie::orderBy('created_at','desc')->take(3)->get();
-        return view('home', array('series' => $series));
+        $series1 = Serie::orderBy('created_at','desc')->take(5)->get();
+        $series2 = Serie::orderBy('title','asc')->take(5)->get();
+        return view('home', array('series1' => $series1,
+    'series2' => $series2));
     }
 
 

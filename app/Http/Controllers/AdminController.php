@@ -35,9 +35,11 @@ class AdminController extends Controller
                 $contacts = Contact::all();
                 return view('admin.manageContacts', ['contacts' => $contacts]);
 
-            case $request->route()->named('manageSeriesPage'):
-                $favorites = Favorite::all();
-                return view('admin.manageFavorites', ['favorites' => $favorites]);
+            case $request->route()->named('manageFavoritesPage'):
+                // On recupere les series qu'un user a ajouter parmi sa liste d'envie
+                $favorites = Serie::all();
+                return 'Tes favoris';
+                //return view('admin.manageFavorites', ['favorites' => $favorites]);
 
         }
 

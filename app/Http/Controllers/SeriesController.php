@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Serie;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class SeriesController extends Controller
@@ -43,45 +42,40 @@ class SeriesController extends Controller
     {
         $this->validate($request, [
 
-           'author_id'=> 'required',
-
-           'title'=> 'required',
+            'user_id' => 'required|integer',
+            'serie_maker' => 'required|string|max:255',
+           'title'=> 'required|string|max:255',
            'content'=> 'required',
-           'year'=> 'required',
-           /*
-           'actors'=> 'required',
+           'actors'=> 'required|string|max:255',
            'category'=> 'required',
-            'tags'=> 'required',
-           'status'=> 'required',
-            'authors' => 'required',
-           'image'=> 'required',
-           'movie'=> 'required',
-            */
+           //'url'=> 'required',
+           'year'=> 'required|date',
+           'status'=> '',
+           //'image'=> 'required',
+           //'movie'=> 'required',
+
         ]);
 
         // Create serie
-        Serie::create($request->all());
+        //Serie::create($request->all());
 
-        /*
-        $serie = new Serie;
-        $serie->author_id => author_id;
-        $serie->title;
-        $serie->content;
-        */
-        /*
-        $serie->actors
-        $serie->
-        $serie->
-        $serie->category
-        $serie->tags
-        $serie->status
-        $serie->year
-        $serie->image
-        $serie->movie
-        $serie->
-        */
+        $serie = new Serie();
+        $serie->user_id =  $request->input('user_id');
+        $serie->serie_maker =  $request->input('serie_maker');
+        $serie->title =  $request->input('title');
+        $serie->content =  $request->input('content');
+        $serie->actors =  $request->input('actors');
+        $serie->category =  $request->input('category');
+        $serie->url = urlencode( $request->input('title'));
+        $serie->year =  $request->input('year');
+        //$serie->status =  $request->input('title');
+        $serie->image =  $request->input('image');
+        $serie->movie =  $request->input('movie');
 
-        return back()->with('info', 'La serie a bien été créé');
+        $serie->save();
+
+
+        return redirect()->route('manageSeriesPage')->with('info', 'La serie a bien été ajoutée');
     }
 
     /**
@@ -144,9 +138,48 @@ class SeriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
 
-        return 'Mise à Jour';
+   {
+       //return $request;
+
+
+        $this->validate($request, [
+
+            'user_id' => 'required|integer',
+            'serie_maker' => 'required|string|max:255',
+           'title'=> 'required|string|max:255',
+           'content'=> 'required',
+           'actors'=> 'required|string|max:255',
+           'category'=> 'required',
+           //'url'=> 'required',
+           'year'=> 'required|date',
+           'status'=> '',
+           //'image'=> 'required',
+           //'movie'=> 'required',
+         ]);
+
+        $serie = Serie::find($id);
+        $serie->user_id =  $request->input('user_id');
+        $serie->serie_maker =  $request->input('serie_maker');
+        $serie->title =  $request->input('title');
+        $serie->content =  $request->input('content');
+        $serie->actors =  $request->input('actors');
+        $serie->category =  $request->input('category');
+        $serie->url = urlencode( $request->input('title'));
+        $serie->year =  $request->input('year');
+        //$serie->status =  $request->input('title');
+        $serie->image =  $request->input('image');
+        $serie->movie =  $request->input('movie');
+
+        $serie->save();
+
+         /*
+         $serie->title = $request->input('title');
+         $serie->content = $request->input('content');
+         $serie->year = $request->input('year');
+         $serie->save();*/
+         //return $serie;
+         return redirect()->route('manageSeriesPage')->with('info', 'Mise à jour effectuée avec succés !');
     }
 
     /**
@@ -155,9 +188,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($serie_url)
     {
-        $serie = Serie::where('url',$id)->first();
+        $serie = Serie::where('url',$serie_url)->first();
         $serie->delete();
 
     return back()->with('info', 'Suppression reussie ! :).');
