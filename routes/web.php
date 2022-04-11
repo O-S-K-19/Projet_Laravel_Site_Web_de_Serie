@@ -31,7 +31,12 @@ Route::get('/series', [SeriesController::class, 'index'])->name('seriesPage');
 Route::get('/series/{url}', [SeriesController::class, 'show'])->name('singleSeriePage');
 Route::get('/contact', [ContactController::class, 'index'])->name('contactPage');
 Route::post('/contact', [ContactController::class, 'store'])->name('contactStore');
+Route::post('/comments', [CommentController::class, 'index'])->name('commentIndex');
+Route::post('/comments', [CommentController::class, 'store'])->name('commentStore');
 
+// -------------- LES ROUTES POUR LA CONNEXION GOOGLE ------------------------------------------------------------------------------------------------
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 
 // -------------- LES ROUTES DE GESTION DES SUBSCRIBERS ------------------------------------------------------------------------------------------------

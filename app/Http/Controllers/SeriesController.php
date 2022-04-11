@@ -87,10 +87,11 @@ class SeriesController extends Controller
      */
     public function show($serie_url) {
         $serie = Serie::where('url', $serie_url)->first();
-        $comments = Comment::all();
+        $allComments = Comment::all();
+
         return view('series.single',array(
             'serie' => $serie,
-            'comments'=> $comments,
+            'comments'=> $allComments,
 ));
         //return view('series.single',['serie' => $serie]);
         //return view('series.single')->with('serie',$serie);

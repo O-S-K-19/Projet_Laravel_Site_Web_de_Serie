@@ -89,7 +89,7 @@
           </li>
           @if(Auth::user()->role == 'admin')
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('manageFavoritesPage') }}" class="nav-link">Files Data</a>
+            <a href="{{ route('upload.index') }}" class="nav-link">Files Data</a>
         </li>
         @endif
         </ul>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{-- {{-- <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'> --}}
 @yield('head')
 </head>
@@ -84,47 +84,72 @@
 
 
 
-    <div class="callout small primary" style="position: relative;
-    top: 400px; font-size: 15px;">
-
-        <div class="s-footer__main">
-
-            <div class="row">
-
-                <div class="column large-2 medium-6 tab-12 s-footer__info" style="position: relative; left: 100px">
-
-                    <h5>About du Site</h5>
-
-                    <p>
-                    C'est un site de critique et location de serie à la senscritique !
-                    </p>
-
-                </div>
-
-                <div class="column large-6 medium-3 tab-6 s-footer__social-links" style="position: relative; left: 400px">
-
-                    <h5>Suivez-nous :</h5>
-
-                    <ul>
-                        <li ><a href="https://twitter.com/">Twitter</a></li>
-                        <li ><a href="https://www.facebook.com/">Facebook</a></li>
-                        <li ><a href="https://www.instagram.com/">Instagram</a></li>
+    <footer class="bg-white">
+        <div class="container py-5">
+            <div class="py-4 row">
+                <div class="mb-4 col-lg-4 col-md-6 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
+                    <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt.</p>
+                    <ul class="mt-4 list-inline">
+                        <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i
+                                    class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i
+                                    class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i
+                                    class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i
+                                    class="fa fa-pinterest"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i
+                                    class="fa fa-vimeo"></i></a></li>
                     </ul>
-
                 </div>
-
-            </div>
-
-        </div>
-
-        <div class="s-footer__bottom">
-
-                    <div class="ss-copyright">
-                        <span>Copyright © 2022 Series. All Right Reserved :)</span>
+                <div class="mb-4 col-lg-2 col-md-6 mb-lg-0">
+                    <h6 class="mb-4 text-uppercase font-weight-bold">Site-series</h6>
+                    <ul class="mb-0 list-unstyled">
+                        <li class="mb-2"><a href="{{ route('homePage') }}" class="text-muted">Home</a></li>
+                        <li class="mb-2"><a href="{{ route('seriesPage') }}" class="text-muted">Series</a></li>
+                        <li class="mb-2"><a href="{{ route('contactPage') }}" class="text-muted">Contact</a></li>
+                        @if (Route::has('login'))
+                            <li class="mb-2"><a href="#" class="text-muted">My favorites ()</a></li>
+                            <li class="mb-2"><a href="" class="text-muted">Mail BOX ()</a></li>
+                        @endif
+                    </ul>
+                </div>
+                <div class="mb-4 col-lg-2 col-md-6 mb-lg-0">
+                    <h6 class="mb-4 text-uppercase font-weight-bold">Connectez-vous avec :</h6>
+                    <ul class="mb-0 list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted">Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">Google</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">Pinterest</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">Twiter</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-lg-0">
+                    <h6 class="mb-4 text-uppercase font-weight-bold">Newsletter</h6>
+                    <p class="mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque
+                        temporibus.</p>
+                    <div class="p-1 border rounded">
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
+                                class="border-0 form-control shadow-0">
+                            <div class="input-group-append">
+                                <button id="button-addon1" type="submit" class="btn btn-link"><i
+                                        class="fa fa-paper-plane"></i></button>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
         </div>
 
-    </div>
+        <!-- Copyrights -->
+        <div class="py-4 bg-light">
+            <div class="container text-center">
+                <p class="py-2 mb-0 text-muted"><span>© Copyright DCISS 2022</span></p>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

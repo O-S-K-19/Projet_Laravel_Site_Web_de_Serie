@@ -24,7 +24,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,20 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'content'=>'required'
+        ]);
+
+
+        Comment::create([
+            'user_id' =>$request->user_id,
+            'serie_id' => $request->serie_id,
+            'content' => $request->content,
+            'date' => now(),
+        ]);
+        // $serieID = App\Models\Serie::where('id',  $request->serie_id)
+
+        return back();
     }
 
     /**
@@ -44,9 +57,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        //to validate form
+        $this->validate($request, [
+            'content'=>'required'
+        ]);
+
+        //store data in data base
+        Comment::create ($request->all());
+        return redirect()->route('singleSeriePage');
     }
 
     /**
