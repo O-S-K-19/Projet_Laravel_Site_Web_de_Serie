@@ -68,7 +68,7 @@
 
                 <li class="" style="display: inline-block; padding: 10px">
                     <figure	class="">
-                        <a href="{{ route('singleSeriePage', $serie->url) }}" class="" id="">
+
                             <img class="" itemprop="image" src="{{ $serie->image }}" alt="image" title="{{ $serie->title }}" width="150" height="150"></a>
                     </figure>
                 </li>

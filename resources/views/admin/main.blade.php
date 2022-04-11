@@ -37,7 +37,7 @@
         <a href="{{ route('homePage') }}" class="nav-link">@lang('Home')</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('homePage') }}" class="nav-link">@lang('Profile')</a>
+        <a href="{{ route('profile.show') }}" class="nav-link">@lang('Profile')</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <form action="{{ route('logout') }}" method="POST" hidden>
@@ -66,24 +66,32 @@
             <li class="nav-item d-none d-sm-inline-block">
                <span style="font-size: 30px; color:whitesmoke; ">Tableau de bord</span>
             </li>
+            @if(Auth::user()->role == 'admin')
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('manageUsersPage') }}" class="nav-link">Users</a>
             </li>
+            @endif
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('manageSeriesPage') }}" class="nav-link">Series</a>
             </li>
+
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('manageCommentsPage') }}" class="nav-link">Comments</a>
             </li>
+
+            @if(Auth::user()->role == 'admin')
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('manageContactsPage') }}" class="nav-link">Contacts</a>
             </li>
+            @endif
             <li class="nav-item d-none d-sm-inline-block">
               <a href="{{ route('manageContactsPage') }}" class="nav-link">Mail box</a>
           </li>
+          @if(Auth::user()->role == 'admin')
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('manageFavoritesPage') }}" class="nav-link">Favorite</a>
+            <a href="{{ route('manageFavoritesPage') }}" class="nav-link">Files Data</a>
         </li>
+        @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

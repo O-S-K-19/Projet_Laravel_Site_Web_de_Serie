@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Contact;
+use App\Models\File;
 use App\Models\User;
 use App\Models\Serie;
 use Illuminate\Http\Request;
@@ -34,12 +35,6 @@ class AdminController extends Controller
             case $request->route()->named('manageContactsPage'):
                 $contacts = Contact::all();
                 return view('admin.manageContacts', ['contacts' => $contacts]);
-
-            case $request->route()->named('manageFavoritesPage'):
-                // On recupere les series qu'un user a ajouter parmi sa liste d'envie
-                $favorites = Serie::all();
-                return 'Tes favoris';
-                //return view('admin.manageFavorites', ['favorites' => $favorites]);
 
         }
 

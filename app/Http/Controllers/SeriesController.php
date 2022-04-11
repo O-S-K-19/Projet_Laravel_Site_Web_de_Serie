@@ -60,6 +60,7 @@ class SeriesController extends Controller
         //Serie::create($request->all());
 
         $serie = new Serie();
+
         $serie->user_id =  $request->input('user_id');
         $serie->serie_maker =  $request->input('serie_maker');
         $serie->title =  $request->input('title');

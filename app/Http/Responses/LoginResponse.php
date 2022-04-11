@@ -19,39 +19,15 @@ class LoginResponse implements LoginResponseContract
     {
         // replace this with your own code
         // the user can be located with Auth facade
-        $user = Auth::user();
-       if($user->is_admin){
-           //return $user;
+
+       if( Auth::user()){
+
             return $request->wantsJson()
             ? response()->json(['two_factor' => false])
-            : redirect()->route('adminDashboard');
+            : redirect()->route('homePage');
        }
 
-       else {
-           //Producer
-           if($user->role_id == 1){
-               // return $user;
-                return $request->wantsJson()
-                ? response()->json(['two_factor' => false])
-                : redirect()->route('producerDashboard');
-           }
-           //Subscriber
-           else if($user->role_id == 2){
-               //return $user;
-                return $request->wantsJson()
-                ? response()->json(['two_factor' => false])
-                : redirect()->route('dashboard');
-           }
-
-        }
-        /*
-        else{
-            return $request->wantsJson()
-            ? response()->json(['two_factor' => false])
-            : redirect()->route('dashboard');
-           }
-        */
-       }
+    }
 
 }
 

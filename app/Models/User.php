@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\File;
 use App\Models\Serie;
 use App\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
@@ -74,5 +75,8 @@ class User extends Authenticatable
     return $this->hasMany(Comment::class);
     }
 
+    public function files(){
+        return $this->hasMany(File::class);
+    }
 
 }
