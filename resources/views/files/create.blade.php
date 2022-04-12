@@ -9,7 +9,7 @@
   <div class="container">
 
 
-<form method="post" action="{{url('file')}}" enctype="multipart/form-data">
+<form method="post" action="{{route('upload.store')}}" enctype="multipart/form-data">
   {{csrf_field()}}
 
         <div class="input-group control-group increment" >

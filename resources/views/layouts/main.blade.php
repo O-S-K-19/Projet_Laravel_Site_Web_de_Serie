@@ -29,7 +29,7 @@
                 <li><a href="{{ route('seriesPage') }}">Series</a></li>
                 <li><a href="{{ route('contactPage') }}">Contact</a></li>
                 @if (!(is_null(Auth::user())))
-                    <li><a href="#">My Favorites ()</a></li>
+                    <li><a href="{{ route('favorites.index') }}">My Favorites ()</a></li>
                     <li><a href="#">Mail BOX ()</a></li>
                     @if(Auth::user()->role == 'admin')
                         <li><a href="{{ url('/admin') }}">Administration</a></li>

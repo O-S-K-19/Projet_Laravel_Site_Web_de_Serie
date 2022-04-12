@@ -4,20 +4,11 @@
    @section($title = "Series")
    @section('content')
        <div class="card">
-           <header class="card-header">
-               <p class="card-header-title">series</p>
-           </header>
            <div class="card-content">
                <div class="content">
-                   @if(session()->has('info'))
-                       <div class="notification is-success">
-                           {{ session('info') }}
-                       </div>
-                   @endif
-                   @if (Route::prefix('/admin'))
-                   <a class="button is-info" href="{{ route('series.create') }}">Créer une série</a>
-                   @endif
-                   @if (count($series) > 0)
+
+                   @if (count($favorites) > 0)
+
                    <table class="table is-hoverable">
                        <thead>
                            <tr>
@@ -29,20 +20,22 @@
                            </tr>
                        </thead>
                        <tbody>
+                               @foreach($favorites as $serie)
 
-                               @foreach($series as $serie)
+                               @if( $serie->user_id == Auth::user()->id)
                                    <tr>
                                        <td>{{ $serie->id }}</td>
                                        <td><strong>{{ $serie->title }}</strong></td>
                                        <td><a class="button is-primary" href="{{ route('singleSeriePage', $serie->url) }}">Voir</a></td>
                                        <td>
-                                           <form action="{{ route('series.destroy', $serie->url) }}" method="post">
+                                           <form action="{{ route('favorites.destroy', $serie->id) }}" method="post">
                                                @csrf
                                                @method('DELETE')
                                                <button class="button is-danger" type="submit">Retirer</button>
                                            </form>
                                        </td>
                                    </tr>
+                                   @endif
                                @endforeach
                        </tbody>
                    </table>

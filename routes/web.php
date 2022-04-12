@@ -8,9 +8,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FavoritesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +52,7 @@ Route::post('/serie', [SeriesController::class, 'getComment']);
 
     Route::middleware('auth')->group(function(){
 
-        Route::resource('/favorites', FilesController::class);
+        Route::resource('/favorites', FavoritesController::class);
         Route::resource('/upload', FilesController::class);
 
         // -------------- LES ROUTES DE L'ADMIN -----------------------------------------------------------------------------------------------------------------

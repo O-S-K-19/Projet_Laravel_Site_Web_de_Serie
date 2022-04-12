@@ -31,11 +31,11 @@
 
             <div class="mt-4">
                 <label for="Redactor">Producer
-                    <x-jet-input id="Producer" value="1" class="form-radio" type="radio" name="role_id" required />
+                    <x-jet-input id="Producer" value="Producer" class="form-radio" type="radio" name="role" required />
                     <span class="checkmark"></span>
                     </label>
                 <label for="Subscriber">Subscriber
-                <x-jet-input id="Subscriber" value="2" class="form-radio" type="radio" name="role_id" required />
+                <x-jet-input id="Subscriber" value="Subscriber" class="form-radio" type="radio" name="role" required />
                 <span class="checkmark"></span>
                 </label>
             </div>
