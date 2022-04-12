@@ -19,15 +19,15 @@
 
                         <li class="" style="display: inline-block; padding: 10px">
                             <figure	class="">
-
-                             <img class="" itemprop="image" src="{{ $serie->image }}" alt="image" title="{{ $serie->title }}" width="150" height="150"></a>
+                                <a href="{{ route('singleSeriePage', $serie->url) }}" class="" id="">
+                             <img class="" itemprop="image" src="{{ $serie->image }}" alt="image" title="{{ $serie->title }}" width="350" height="350"></a>
                             </figure>
                         </li>
                         <li class="block-serie" style="display: inline-block; padding: 10px">
                             <h4 class=""><a href="{{ route('singleSeriePage', $serie->url) }}" class="" id="">{{ $serie->title }}</a><span class="">({{ $serie->year }})</span></h4>
                             <p class="">{{ $serie->category }}</p>
                            <p class="">Série de {{ $serie->serie_maker }}</p>
-                           <figcaption>Note : 6.8</figcaption>
+                           <figcaption>Note : </figcaption>
 
                            <form action="{{ route('favorites.store') }}" method="POST">
                             @csrf
@@ -38,7 +38,7 @@
                                 @endif
                                 <input type="hidden" id="serie_id" name=" year" value="{{ $serie->year }}" />
 
-                                <input type="submit" name="send" class="btn btn-outline-primary" value="Add Comment" />
+                                <input type="submit" name="send" class="btn btn-outline-primary" value="Ajouter aux favoris" />
                             </div>
 
                         </form>
@@ -46,25 +46,14 @@
                             <a class="button is-primary" href="#">Noter</a>
                         </li>
                         <br>
+
                     @endforeach
                 </ul>
-
+                {{ $series->links() }}
                 @else
                     <p>No series found</p>
                 @endif
             </div>
         </div>
-    @endauth
+    @endsection
 
-    <ul style="position: relative;
-                        left: 150px;">
-        @foreach ($series as $serie)
-
-
-
-
-
-
-
-
-@endsection

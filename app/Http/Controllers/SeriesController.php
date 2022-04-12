@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class SeriesController extends Controller
 {
     /**
@@ -16,8 +17,8 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        //$series = Serie::orderBy('title','asc')->paginate(3); Pour Pagination et ajouter ça apres la boucle dans la vue : {{ $series->links() }}
-        $series = Serie::all();
+        //$series = Serie::orderBy('title','asc'); Pour Pagination et ajouter ça apres la boucle dans la vue : {{ $series->links() }}
+        $series = Serie::paginate(5);
         return view('series.all', ['series' => $series]);
         //return view('series.all')->with('series', $series);
     }

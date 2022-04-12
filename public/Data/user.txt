@@ -1,0 +1,13 @@
+admin,admin@admin.com,admin,admin,1
+producer,producer@producer.com,producer,producer,1
+subscriber,subscriber@subscriber.com,subscriber,subscriber,1
+Madlin Probert,mprobert0@hao123.com,password,producer,1
+Inga Jahns,ijahns1@smh.com.au,password,subscriber,1
+Gary Frewer,gfrewer2@skyrock.com,password,subscriber,0
+Mackenzie Goodhew,mgoodhew3@nature.com,subscriber,Mackenzie,1
+Izzy Stailey,istailey4@miibeian.gov.cn,password,subscriber,0
+Joellyn Aizic,jaizic5@wikispaces.com,password,producer,0
+Felita Pauls,fpauls6@va.gov,password,producer,1
+Kirsteni Vickery,kvickery7@businessinsider.com,password,producer,1
+Carly McGuff,cmcguff8@deviantart.com,password,producer,1
+Granny McNea,gmcnea9@pbs.org,password,subscriber,0

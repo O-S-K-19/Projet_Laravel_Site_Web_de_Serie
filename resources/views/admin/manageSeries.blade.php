@@ -24,18 +24,7 @@
                         <th>Date de sortie</th>
                         <th></th>
                     </tr>
-                </thead>
-                <tbody>
-                    @if (!Route::prefix('/admin'))
-                    @foreach($series as $serie)
-                            <tr>
-                                <td>{{ $serie->id }}</td>
-                                <td>{{ $serie->year }}</td>
-                                <td><strong><a href="/series/{{$serie->url}}">{{$serie->title }}</a></strong></td>
-                            </tr>
-                        @endforeach
-                    @else
-                        @foreach($series as $serie)
+                     @foreach($series as $serie)
                             <tr>
                                 <td>{{ $serie->id }}</td>
                                 <td><strong>{{ $serie->title }}</strong></td>
@@ -51,13 +40,15 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @endif
+
                 </tbody>
             </table>
             @else
                 <p>No series found</p>
             @endif
         </div>
+
     </div>
 </div>
+
 @endsection

@@ -16,28 +16,52 @@
                 <div>
                     <img src="{{ $serie->image }}">
                 </div>
+                <br>
+                <br>
                 <div class="card-info">
                     <h1 id="serie_title">{{ $serie->title }}</h1>
+                    <br>
                     <span class="date">
                         <h3> Sortie le :</h3> {{ $serie->year }}
                     </span>
                     <p class="date">
+                    <br>
                     <h3> Acteurs :</h3> {{ $serie->actors }}</p>
                     <p class="date">
+                    <br>
                     <h3> Categories :</h3> {{ $serie->category }}</p>
-                    <hr>
+                    <br>
                     <h3>Description</h3>
                     <p class="excerpt">{{ $serie->content }}</p>
                 </div>
+                <br>
+                <br>
+                <br>
                 <div>
-                    <img src="{{ $serie->movie }}">
+                    <iframe style="position: relative; left: 200px" width="700" height="520" src="{{ $serie->movie }}"> </iframe>
                 </div>
             </div>
-            <hr>
+
+            <br>
+            <form action="{{ route('favorites.store') }}" method="POST">
+                @csrf
+                <div class="comments_here">
+                    <input type="hidden" id="serie_id" name=" title" value="{{ $serie->title }}" />
+                    @if (!(is_null(Auth::user())))
+                    <input type="hidden" id="user_id" name=" user_id" value="{{ Auth::user()->id }}" />
+                    @endif
+                    <input type="hidden" id="serie_id" name=" year" value="{{ $serie->year }}" />
+
+                    <input type="submit" name="send" class="btn btn-outline-primary" value="Ajouter aux favoris" />
+                </div>
+
+            </form>
+            <br>
+            <br>
             {{-- ############ Comments here ############# --}}
             <div>
                 <div>
-                    <h3>Comments</h3>
+                    <h2 style="font-size: 25px; color:blue">Commentaires des utilisateurs </h2>
                     <ul>
 
                         @foreach($comments as $comment)
@@ -56,7 +80,7 @@
                     <form action="{{ route('commentStore', $serie->url) }}" method="POST">
                         @csrf
                         <div class="comments_here">
-                            <input type="text" class="form-control  @error('content') is-invalid @enderror" name="content" id="content" placeholder="saiy something here ..." value="">
+                            <input type="text" class="form-control  @error('content') is-invalid @enderror" name="content" id="content" placeholder="say something here ..." value="">
                             <input type="hidden" id="serie_id" name=" serie_id" value="{{ $serie->id }}" />
                             <input type="hidden" id="user_id" name=" user_id" value="{{ $serie->user_id }}" />
                             @error('content')

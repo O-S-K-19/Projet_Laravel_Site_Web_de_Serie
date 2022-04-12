@@ -27,7 +27,7 @@ class CreateSeriesTable extends Migration
             $table->mediumText('category')->nullable();
             $table->string('url', 255)->unique();
             $table->string('status', 45)->default('draft')->nullable();
-            $table->string('year');
+            $table->string('year')->nullable();
             $table->string('image', 255)->default('none')->nullable();
             $table->string('movie', 255)->default('none')->nullable();
             $table->timestamps();

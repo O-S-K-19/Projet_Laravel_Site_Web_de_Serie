@@ -45,7 +45,8 @@
                     </div>
                 @enderror
             </div>
-            <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
+            <button type="submit" class="">Envoyer </button>
+
         </form>
     </div>
 
