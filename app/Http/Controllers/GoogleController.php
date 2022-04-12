@@ -1,13 +1,13 @@
 <?php
-
+  
 namespace App\Http\Controllers;
-
+  
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+  
 class GoogleController extends Controller
 {
     /**
@@ -19,7 +19,7 @@ class GoogleController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-
+        
     /**
      * Create a new controller instance.
      *
@@ -28,17 +28,17 @@ class GoogleController extends Controller
     public function handleGoogleCallback()
     {
         try {
-
+      
             $user = Socialite::driver('google')->user();
-
+       
             $finduser = User::where('google_id', $user->id)->first();
-
+       
             if($finduser){
-
+       
                 Auth::login($finduser);
-
-                return redirect()->intended('dashboard');
-
+      
+                return redirect()->route('homePage');
+       
             }else{
                 $newUser = User::create([
                     'name' => $user->name,
@@ -46,12 +46,12 @@ class GoogleController extends Controller
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy')
                 ]);
-
+      
                 Auth::login($newUser);
-
-                return redirect()->intended('dashboard');
+      
+                return redirect()->route('homePage');
             }
-
+      
         } catch (Exception $e) {
             dd($e->getMessage());
         }

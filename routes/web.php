@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
@@ -42,7 +43,6 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 // -------------- LES ROUTES DE GESTION DES SUBSCRIBERS ------------------------------------------------------------------------------------------------
 
 Route::post('/serie', [SeriesController::class, 'getComment']);
-
 
 
 
