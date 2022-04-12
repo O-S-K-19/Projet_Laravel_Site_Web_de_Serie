@@ -20,7 +20,7 @@
                         <li class="" style="display: inline-block; padding: 10px">
                             <figure	class="">
 
-                                    <img class="" itemprop="image" src="{{ $serie->image }}" alt="image" title="{{ $serie->title }}" width="150" height="150"></a>
+                             <img class="" itemprop="image" src="{{ $serie->image }}" alt="image" title="{{ $serie->title }}" width="150" height="150"></a>
                             </figure>
                         </li>
                         <li class="block-serie" style="display: inline-block; padding: 10px">
@@ -42,11 +42,6 @@
                             </div>
 
                         </form>
-
-
-
-
-
 
                             <a class="button is-primary" href="#">Noter</a>
                         </li>
