@@ -47,7 +47,6 @@ Route::post('/serie', [SeriesController::class, 'getComment']);
 
 
 
-
 // -------------- LES ROUTES D'AUTHENTIFICATIONS -----------------------------------------------------------------------------------------------------------------
 
     Route::middleware('auth')->group(function(){

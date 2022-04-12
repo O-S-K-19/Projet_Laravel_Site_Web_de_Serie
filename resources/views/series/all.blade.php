@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section($title = "Series")
+@section($title = 'Series')
 @section('content')
     <div class="card">
 
@@ -54,8 +54,11 @@
                 @endif
             </div>
         </div>
-    </div>
+    @endauth
 
+    <ul style="position: relative;
+                        left: 150px;">
+        @foreach ($series as $serie)
 
 
 
@@ -65,11 +68,3 @@
 
 
 @endsection
-
-
-
-
-
-
-
-
